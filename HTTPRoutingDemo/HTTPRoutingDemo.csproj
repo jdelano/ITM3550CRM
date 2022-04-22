@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Controllers\" />
+    <None Remove="Database\" />
+    <None Remove="Database\Models\" />
+    <None Remove="Repositories\" />
+    <None Remove="System.Configuration.ConfigurationManager" />
+    <None Remove="Services\" />
+    <None Remove="Microsoft.EntityFrameworkCore.InMemory" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Database\" />
+    <Folder Include="Database\Models\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.16" />
+  </ItemGroup>
+</Project>
