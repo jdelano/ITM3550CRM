@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using HTTPRoutingDemo.Database.Models;
 using HTTPRoutingDemo.Repositories;
 
@@ -7,36 +8,36 @@ namespace HTTPRoutingDemo.Services
 {
     public class CustomerService
     {
-        private readonly CustomerRepository _customerRepository;
+        private readonly CustomerRepository _repository;
 
-        public CustomerService(CustomerRepository customerRepository)
+        public CustomerService(CustomerRepository repository)
         {
-            _customerRepository = customerRepository;
+            _repository = repository;
         }
 
-        public Customer GetCustomer(int id)
+        public async Task<Customer?> GetCustomerAsync(int customerId)
         {
-            return _customerRepository.FindCustomer(id);
+            return await _repository.FindCustomerAsync(customerId);
         }
 
         public IEnumerable<Customer> GetCustomers()
         {
-            return _customerRepository.GetCustomers();
+            return _repository.GetCustomers();
         }
 
-        public void UpdateCustomer(Customer customer)
+        public async Task<bool> UpdateCustomerAsync(Customer customer)
         {
-            _customerRepository.UpdateCustomer(customer);
+            return await _repository.UpdateCustomerAsync(customer);
         }
 
-        public void CreateCustomer(Customer customer)
+        public async Task CreateCustomerAsync(Customer customer)
         {
-            _customerRepository.CreateCustomer(customer);
+            await _repository.CreateCustomerAsync(customer);
         }
 
-        public void DeleteCustomer(int id)
+        public async Task DeleteCustomerAsync(int customerId)
         {
-            _customerRepository.DeleteCustomer(id);
+            await _repository.DeleteCustomerAsync(customerId);
         }
     }
 }

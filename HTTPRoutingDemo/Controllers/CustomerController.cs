@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using HTTPRoutingDemo.Database.Models;
 using HTTPRoutingDemo.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -24,9 +25,9 @@ namespace HTTPRoutingDemo.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Customer> GetCustomer(int id)
+        public async Task<ActionResult<Customer>> GetCustomer(int id)
         {
-            var customer = _customerService.GetCustomer(id);
+            var customer = await _customerService.GetCustomerAsync(id);
             if (customer != null)
             {
                 return customer;
@@ -38,27 +39,27 @@ namespace HTTPRoutingDemo.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Customer> PostCustomer(Customer customer)
+        public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
         {
-            _customerService.CreateCustomer(customer);
+            await _customerService.CreateCustomerAsync(customer);
             return CreatedAtAction(nameof(GetCustomer), new { id = customer.CustomerId }, customer);
         }
 
         [HttpPut("{id}")]
-        public ActionResult PutCustomer(int id, Customer customer)
+        public async Task<ActionResult> PutCustomer(int id, Customer customer)
         {
             if (id != customer.CustomerId)
             {
                 return BadRequest();
             }
-            _customerService.UpdateCustomer(customer);
+            await _customerService.UpdateCustomerAsync(customer);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteCustomer(int id)
+        public async Task<ActionResult> DeleteCustomer(int id)
         {
-            _customerService.DeleteCustomer(id);
+            await _customerService.DeleteCustomerAsync(id);
             return NoContent();
         }
     }

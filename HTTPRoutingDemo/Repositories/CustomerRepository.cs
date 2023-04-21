@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text.Json;
+using System.Threading.Tasks;
+using HTTPRoutingDemo.Database;
 using HTTPRoutingDemo.Database.Models;
 
 namespace HTTPRoutingDemo.Repositories
@@ -14,19 +13,6 @@ namespace HTTPRoutingDemo.Repositories
         public CustomerRepository(CRMContext context)
         {
             _context = context;
-            LoadCustomersDB();
-        }
-
-        private void LoadCustomersDB()
-        {
-            if (_context.Customers.Count() == 0)
-            {
-                var customer1 = new Customer { CustomerId = 1, FirstName = "John", LastName = "Doe", Balance = 500.00 };
-                var customer2 = new Customer { CustomerId = 2, FirstName = "Jim", LastName = "Jones", Balance = 250.00 };
-                _context.Customers.Add(customer1);
-                _context.Customers.Add(customer2);
-                _context.SaveChanges();
-            }
         }
 
         public IEnumerable<Customer> GetCustomers()
@@ -34,31 +20,39 @@ namespace HTTPRoutingDemo.Repositories
             return _context.Customers;
         }
 
-        public Customer FindCustomer(int id)
+        public async Task<Customer?> FindCustomerAsync(int customerId)
         {
-            return _context.Customers.FirstOrDefault(c => c.CustomerId == id);
+            return await _context.Customers.FindAsync(customerId);
         }
 
-        public void CreateCustomer(Customer customer)
+        public async Task CreateCustomerAsync(Customer customer)
         {
-            _context.Customers.Add(customer);
-            _context.SaveChanges();
+            await _context.Customers.AddAsync(customer);
+            await _context.SaveChangesAsync();
         }
 
-        public void UpdateCustomer(Customer customer)
+        public async Task DeleteCustomerAsync(int customerId)
         {
-            var dbCustomer = _context.Customers.FirstOrDefault(c => c.CustomerId == customer.CustomerId);
-            dbCustomer.FirstName = customer.FirstName;
-            dbCustomer.LastName = customer.LastName;
-            dbCustomer.Balance = customer.Balance;
-            _context.SaveChanges();
+            var customer = await FindCustomerAsync(customerId);
+            if (customer != null)
+            {
+                _context.Customers.Remove(customer);
+                await _context.SaveChangesAsync();
+            }
         }
 
-        public void DeleteCustomer(int id)
+        public async Task<bool> UpdateCustomerAsync(Customer customer)
         {
-            var customer = FindCustomer(id);
-            _context.Customers.Remove(customer);
-            _context.SaveChanges();
+            var dbCustomer = await FindCustomerAsync(customer.CustomerId);
+            if (dbCustomer != null)
+            {
+                dbCustomer.FirstName = customer.FirstName;
+                dbCustomer.LastName = customer.LastName;
+                dbCustomer.Balance = customer.Balance;
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -1,0 +1,43 @@
+﻿<Properties StartupConfiguration="{5ADF5E48-0E83-49E8-9F8E-298C75E4C9DF}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.HTTPRoutingDemo PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="HTTPRoutingDemo/Controllers/CustomerController.cs">
+    <Files>
+      <File FileName="HTTPRoutingDemo/Database/CRMContext.cs" Line="9" Column="1" />
+      <File FileName="HTTPRoutingDemo/Program.cs" Line="20" Column="16" />
+      <File FileName="HTTPRoutingDemo/Services/CustomerService.cs" Line="25" Column="28" />
+      <File FileName="HTTPRoutingDemo/Services/OrderService.cs" Line="41" Column="10" />
+      <File FileName="HTTPRoutingDemo/Repositories/CustomerRepository.cs" />
+      <File FileName="HTTPRoutingDemo/Controllers/CustomerController.cs" Line="64" Column="10" />
+      <File FileName="HTTPRoutingDemo/Repositories/OrderRepository.cs" Line="22" Column="1" />
+      <File FileName="HTTPRoutingDemo/appsettings.json" Line="1" Column="1" />
+      <File FileName="HTTPRoutingDemo/Properties/launchSettings.json" Line="1" Column="1" />
+      <File FileName="HTTPRoutingDemo/Database/Models/Order.cs" Line="12" Column="1" />
+      <File FileName="HTTPRoutingDemo/Database/Models/Customer.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="HTTPRoutingDemo" expanded="True">
+            <Node name="HTTPRoutingDemo" expanded="True" selected="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="Database" expanded="True">
+                <Node name="Models" expanded="True" />
+              </Node>
+              <Node name="Repositories" expanded="True" />
+              <Node name="Services" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>

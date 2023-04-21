@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using HTTPRoutingDemo.Database.Models;
 using HTTPRoutingDemo.Repositories;
 
@@ -14,9 +15,9 @@ namespace HTTPRoutingDemo.Services
             _orderRepository = orderRepository;
         }
 
-        public Order GetOrder(int id)
+        public async Task<Order?> GetOrderAsync(int orderId)
         {
-            return _orderRepository.FindOrder(id);
+            return await _orderRepository.FindOrderAsync(orderId);
         }
 
         public IEnumerable<Order> GetOrders()
@@ -24,19 +25,19 @@ namespace HTTPRoutingDemo.Services
             return _orderRepository.GetOrders();
         }
 
-        public void UpdateOrder(Order order)
+        public async Task<bool> UpdateOrderAsync(Order order)
         {
-            _orderRepository.UpdateOrder(order);
+            return await _orderRepository.UpdateOrderAsync(order);
         }
 
-        public void CreateOrder(Order order)
+        public async Task CreateOrderAsync(Order order)
         {
-            _orderRepository.CreateOrder(order);
+            await _orderRepository.CreateOrderAsync(order);
         }
 
-        public void DeleteOrder(int id)
+        public async Task DeleteOrderAsync(int orderId)
         {
-            _orderRepository.DeleteOrder(id);
+            await _orderRepository.DeleteOrderAsync(orderId);
         }
     }
 }
