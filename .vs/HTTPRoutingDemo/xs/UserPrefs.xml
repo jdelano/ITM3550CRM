@@ -1,4 +1,4 @@
-﻿<Properties StartupConfiguration="{5ADF5E48-0E83-49E8-9F8E-298C75E4C9DF}|Default">
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{5ADF5E48-0E83-49E8-9F8E-298C75E4C9DF}|Default">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.HTTPRoutingDemo PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
