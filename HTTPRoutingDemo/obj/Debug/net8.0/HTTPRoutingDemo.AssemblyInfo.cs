@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HTTPRoutingDemo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9194d4121d457ba50af69a4f1cb4d6613669d9e6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a00280a50bde395100711af25ac73b8e630a50fa")]
 [assembly: System.Reflection.AssemblyProductAttribute("HTTPRoutingDemo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HTTPRoutingDemo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

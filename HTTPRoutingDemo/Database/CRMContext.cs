@@ -9,17 +9,10 @@ namespace HTTPRoutingDemo.Database
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
 
-        public CRMContext()
+        public CRMContext(DbContextOptions<CRMContext> options)
+            : base(options)
         {
             Database.EnsureCreated();
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseInMemoryDatabase("CRM");
-            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -2,6 +2,7 @@
 using HTTPRoutingDemo.Repositories;
 using HTTPRoutingDemo.Services;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -13,8 +14,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<CRMContext>();
-builder.Services.AddSingleton<CustomerRepository>();
+builder.Services.AddDbContext<CRMContext>(options => options.UseInMemoryDatabase("CRMDemo"));
+builder.Services.AddScoped<CustomerRepository>();
 builder.Services.AddScoped<CustomerService>();
 
 var app = builder.Build();

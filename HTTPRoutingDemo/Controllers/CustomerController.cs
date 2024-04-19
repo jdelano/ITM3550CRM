@@ -53,14 +53,14 @@ namespace HTTPRoutingDemo.Controllers
                 return BadRequest();
             }
             await _customerService.UpdateCustomerAsync(customer);
-            return NoContent();
+            return Ok();
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteCustomer(int id)
         {
             await _customerService.DeleteCustomerAsync(id);
-            return NoContent();
+            return Ok();
         }
     }
 }
