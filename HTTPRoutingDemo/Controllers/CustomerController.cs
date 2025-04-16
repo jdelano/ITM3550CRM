@@ -11,9 +11,9 @@ namespace HTTPRoutingDemo.Controllers
     [Route("api/[controller]")]
     public class CustomerController : Controller
     {
-        private readonly CustomerService _customerService;
+        private readonly ICustomerService _customerService;
 
-        public CustomerController(CustomerService customerService)
+        public CustomerController(ICustomerService customerService)
         {
             _customerService = customerService;
         }
