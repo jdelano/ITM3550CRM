@@ -6,11 +6,20 @@ using HTTPRoutingDemo.Repositories;
 
 namespace HTTPRoutingDemo.Services
 {
-    public class OrderService
+    public interface IOrderService
     {
-        private readonly OrderRepository _orderRepository;
+        Task CreateOrderAsync(Order order);
+        Task DeleteOrderAsync(int orderId);
+        Task<Order?> GetOrderAsync(int orderId);
+        IEnumerable<Order> GetOrders();
+        Task<bool> UpdateOrderAsync(Order order);
+    }
 
-        public OrderService(OrderRepository orderRepository)
+    public class OrderService : IOrderService
+    {
+        private readonly IOrderRepository _orderRepository;
+
+        public OrderService(IOrderRepository orderRepository)
         {
             _orderRepository = orderRepository;
         }

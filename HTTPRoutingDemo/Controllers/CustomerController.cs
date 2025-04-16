@@ -19,18 +19,18 @@ namespace HTTPRoutingDemo.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Customer> Get()
+        public IActionResult Get()
         {
-            return _customerService.GetCustomers();
+            return Ok(_customerService.GetCustomers());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Customer>> GetCustomer(int id)
+        public async Task<IActionResult> Get(int id)
         {
             var customer = await _customerService.GetCustomerAsync(id);
             if (customer != null)
             {
-                return customer;
+                return Ok(customer);
             }
             else
             {
@@ -39,28 +39,28 @@ namespace HTTPRoutingDemo.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
+        public async Task<IActionResult> Post(Customer customer)
         {
             await _customerService.CreateCustomerAsync(customer);
-            return CreatedAtAction(nameof(GetCustomer), new { id = customer.CustomerId }, customer);
+            return CreatedAtAction(nameof(Get), new { id = customer.CustomerId }, customer);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> PutCustomer(int id, Customer customer)
+        public async Task<IActionResult> PutCustomer(int id, Customer customer)
         {
             if (id != customer.CustomerId)
             {
                 return BadRequest();
             }
             await _customerService.UpdateCustomerAsync(customer);
-            return Ok();
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteCustomer(int id)
+        public async Task<IActionResult> DeleteCustomer(int id)
         {
             await _customerService.DeleteCustomerAsync(id);
-            return Ok();
+            return NoContent();
         }
     }
 }

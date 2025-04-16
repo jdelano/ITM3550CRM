@@ -6,11 +6,20 @@ using HTTPRoutingDemo.Repositories;
 
 namespace HTTPRoutingDemo.Services
 {
-    public class CustomerService
+    public interface ICustomerService
     {
-        private readonly CustomerRepository _repository;
+        Task CreateCustomerAsync(Customer customer);
+        Task DeleteCustomerAsync(int customerId);
+        Task<Customer?> GetCustomerAsync(int customerId);
+        IEnumerable<Customer> GetCustomers();
+        Task<bool> UpdateCustomerAsync(Customer customer);
+    }
 
-        public CustomerService(CustomerRepository repository)
+    public class CustomerService : ICustomerService
+    {
+        private readonly ICustomerRepository _repository;
+
+        public CustomerService(ICustomerRepository repository)
         {
             _repository = repository;
         }

@@ -10,7 +10,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HTTPRoutingDemo.Repositories
 {
-    public class OrderRepository
+    public interface IOrderRepository
+    {
+        Task CreateOrderAsync(Order order);
+        Task DeleteOrderAsync(int id);
+        Task<Order?> FindOrderAsync(int id);
+        IEnumerable<Order> GetOrders();
+        Task<bool> UpdateOrderAsync(Order order);
+    }
+
+    public class OrderRepository : IOrderRepository
     {
         private readonly CRMContext _context;
 

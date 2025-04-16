@@ -6,7 +6,16 @@ using HTTPRoutingDemo.Database.Models;
 
 namespace HTTPRoutingDemo.Repositories
 {
-    public class CustomerRepository
+    public interface ICustomerRepository
+    {
+        Task CreateCustomerAsync(Customer customer);
+        Task DeleteCustomerAsync(int customerId);
+        Task<Customer?> FindCustomerAsync(int customerId);
+        IEnumerable<Customer> GetCustomers();
+        Task<bool> UpdateCustomerAsync(Customer customer);
+    }
+
+    public class CustomerRepository : ICustomerRepository
     {
         private readonly CRMContext _context;
 
